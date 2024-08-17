@@ -1,32 +1,32 @@
-// The sum of consecutive integers from 0 to n
-const consecutiveIntegersSum = (n * (n + 1)) / 2;
-
-// The number of integers divisible by K from 0 n
-const n = 9;
-const K = 2;
-const integersDivisibleByK = Math.floor(B / K);
-
-// large array
-const largeArray = [];
-for (let i = -10000; i <= 10000; i++) {
-  if (i !== 5000) {
-    largeArray.push(i * 1000000);
-  }
+module.exports = {
+  createArr,
+  uniqueArr,
+  permute,
+};
+function createArr(n) {
+  return [...Array(n).keys()];
 }
 
-// prefix sums
-function prefixSums(A) {
-  let i = 0,
-    l = A.length,
-    P = new Array(l),
-    sum = A[0];
+function uniqueArr(arr) {
+  return [...new Set(arr)];
+}
 
-  P[0] = sum;
+function permute(numArr) {
+  const result = [];
 
-  while (++i < l) {
-    sum += A[i];
-    P[i] = sum;
+  if (numArr.length === 0) return [];
+  if (numArr.length === 1) return [numArr];
+
+  for (let i = 0; i < numArr.length; i++) {
+    const curr = numArr[i];
+    const remaining = numArr.slice(0, i).concat(numArr.slice(i + 1));
+
+    const remPermutations = permute(remaining);
+
+    for (let j = 0; j < remPermutations.length; j++) {
+      result.push([curr].concat(remPermutations[j]));
+    }
   }
 
-  return P;
+  return result;
 }

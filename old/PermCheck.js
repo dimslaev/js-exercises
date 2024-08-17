@@ -3,11 +3,9 @@
 // Given an array A, return 1 if array A is a permutation and 0 if it is not.
 
 function solution(A) {
-  var i, next;
-
   A.sort((a, b) => a - b);
 
-  var next = 1;
+  let next = 1;
   for (i = 0; i < A.length; i++) {
     if (A[i] != next) return 0;
     next++;
