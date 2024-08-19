@@ -1,3 +1,12 @@
+/**
+ * Given an integer n, representing an amount of money,
+ * your goal is to determine the minimum number of coins
+ * needed to achieve exactly n using any combination of
+ * the following coin denominations:
+ * [1, 5, 7, 9, 11] cents
+ * Return the minimum number of coins that add up to n.
+ */
+
 const assert = require("node:assert").strict;
 
 const coins = [1, 5, 7, 9, 11];

@@ -46,9 +46,9 @@ function StringReduction(str) {
 
       if (!canReduce(chars)) {
         return chars.length;
-      } else {
-        return StringReduction(chars.join(""));
       }
+
+      return StringReduction(chars.join(""));
     }
   }
 

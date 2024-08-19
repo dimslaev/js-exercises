@@ -17,29 +17,18 @@
  */
 
 const assert = require("node:assert").strict;
+const { to24Hour } = require("./_helpers");
 
-function to24(str) {
-  if (str.indexOf("AM") > -1) {
-    return str.replace("AM", "");
-  }
-  const parts = str.replace("PM", "").split(":");
-  let hh = parseInt(parts[0]);
-  hh = hh === 12 ? 12 : hh + 12;
-  const mm = parts[1];
-  return `${hh}:${mm}`;
-}
-
-function toDate(timeStr) {
-  const datePrefix = "2024-08-01T";
-  return new Date(datePrefix + timeStr);
+function toDate(time) {
+  return new Date("2024-08-01T" + time);
 }
 
 function MostFreeTime(strArr) {
   const arr = strArr
     .map((str) => {
       const parts = str.split("-");
-      const start = to24(parts[0]);
-      const end = to24(parts[1]);
+      const start = to24Hour(parts[0]);
+      const end = to24Hour(parts[1]);
       return [start, end];
     })
     .sort((a, b) => toDate(a[0]) - toDate(b[0]));
@@ -59,6 +48,7 @@ function MostFreeTime(strArr) {
 
   return [hh, mm].join(":");
 }
+
 assert.equal(
   MostFreeTime(["10:00AM-12:30PM", "02:00PM-02:45PM", "09:10AM-09:50AM"]),
   "01:30"

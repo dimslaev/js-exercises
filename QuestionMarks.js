@@ -18,7 +18,7 @@ const assert = require("node:assert").strict;
 function QuestionsMarks(str) {
   const clean = str.match(/[0-9?]/g).map((s) => {
     if (s === "?") return -1;
-    else return parseInt(s);
+    return parseInt(s);
   });
 
   let res = false;

@@ -1,8 +1,11 @@
 const assert = require("node:assert").strict;
 
-// If the janitor has a weight limit of 3.0,
-// and the bags weigh [1.01, 1.99, 2.5, 1.5],
-// calculate the minimum number of trips
+/**
+ * If the janitor has a weight limit of 3.0,
+ * and the bags weigh [1.01, 1.99, 2.5, 1.5],
+ * calculate the minimum number of trips to
+ * carry all the garbage bags
+ */
 
 function EfficientJanitor(bagWeights, maxWeight) {
   // Sort the bag weights
