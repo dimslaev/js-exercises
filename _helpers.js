@@ -11,20 +11,20 @@ function uniqueArr(arr) {
   return [...new Set(arr)];
 }
 
-function permute(numArr) {
+function permute(arr) {
+  if (arr.length === 0) return [];
+  if (arr.length === 1) return [arr];
+
   const result = [];
 
-  if (numArr.length === 0) return [];
-  if (numArr.length === 1) return [numArr];
+  for (let i = 0; i < arr.length; i++) {
+    const curr = arr[i];
+    const rems = arr.slice(0, i).concat(arr.slice(i + 1));
 
-  for (let i = 0; i < numArr.length; i++) {
-    const curr = numArr[i];
-    const remaining = numArr.slice(0, i).concat(numArr.slice(i + 1));
+    const remPerms = permute(rems);
 
-    const remPermutations = permute(remaining);
-
-    for (let j = 0; j < remPermutations.length; j++) {
-      result.push([curr].concat(remPermutations[j]));
+    for (let j = 0; j < remPerms.length; j++) {
+      result.push([curr].concat(remPerms[j]));
     }
   }
 

@@ -40,9 +40,10 @@ function StringReduction(str) {
     const curr = chars[i];
     const next = chars[i + 1];
 
-    if (curr !== next && next) {
+    if (next && curr !== next) {
       const third = getThirdChar(curr, next);
       chars.splice(i, 2, third);
+
       if (!canReduce(chars)) {
         return chars.length;
       } else {

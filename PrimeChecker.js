@@ -15,16 +15,17 @@ function isPrime(num) {
 }
 
 function PrimeChecker(num) {
-  const numArr = String(num)
+  const arr = String(num)
     .split("")
     .map((n) => parseInt(n));
-  const perms = permute(numArr);
+  const perms = permute(arr);
 
   for (let i = 0; i < perms.length; i++) {
     if (isPrime(parseInt(perms[i].join("")))) {
       return 1;
     }
   }
+
   return 0;
 }
 

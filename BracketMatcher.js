@@ -26,7 +26,7 @@ function BracketMatcher(str) {
     }
     if (open < 0) return 0;
   }
-  // code goes here
+
   return open !== 0 ? 0 : 1;
 }
 

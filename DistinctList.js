@@ -10,17 +10,20 @@
 const assert = require("node:assert").strict;
 
 function DistinctList(arr) {
-  const hash = {};
+  const hash = new Map();
 
   for (let i = 0; i < arr.length; i++) {
-    const el = arr[i];
-    hash[el] = typeof hash[el] === "number" ? hash[el] + 1 : 0;
+    const key = arr[i];
+    const val = hash.get(key);
+    hash.set(key, typeof val === "number" ? val + 1 : 0);
   }
 
-  return Object.values(hash).reduce((prev, curr) => {
-    if (curr > 0) prev += curr;
-    return prev;
-  }, 0);
+  let sum = 0;
+  for (const value of hash.values()) {
+    if (value > 0) sum += value;
+  }
+
+  return sum;
 }
 
 assert.equal(DistinctList([0, -2, -2, 5, 5, 5]), 3);

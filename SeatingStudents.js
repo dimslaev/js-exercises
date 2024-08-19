@@ -13,8 +13,9 @@
 
 const assert = require("node:assert").strict;
 
+const has = (array, i) => array.indexOf(i) > -1;
+
 function SeatingStudents(arr) {
-  const has = (array, i) => array.indexOf(i) > -1;
   const K = arr[0];
   const occupied = arr.slice(1);
   const free = [...Array(K).keys()]
